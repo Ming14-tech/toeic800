@@ -58,12 +58,12 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange, progres
           </div>
 
           {/* Quick Metrics */}
-          <div className="hidden md:flex items-center gap-4 text-xs">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-amber-300">
-              <Flame className="w-4 h-4 text-amber-400 animate-pulse" />
-              <span className="font-medium">{progress.studyDaysStreak || 1}일 연속 열공 중</span>
+          <div className="flex items-center gap-2 sm:gap-4 text-xs">
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-amber-300">
+              <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 animate-pulse" />
+              <span className="font-medium text-[11px] sm:text-xs">{progress.studyDaysStreak || 1}일 연속</span>
             </div>
-            <div className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300">
+            <div className="hidden md:flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300">
               <span>푼 문제 <strong className="text-white">{progress.solvedPart5 + progress.solvedLC}</strong></span>
               <span className="w-px h-3 bg-slate-700" />
               <span>암기 단어 <strong className="text-emerald-400">{progress.masteredVocabCount}</strong></span>
@@ -77,8 +77,8 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange, progres
           </div>
         </div>
 
-        {/* Navigation Bar */}
-        <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-2 border-t border-slate-800/60">
+        {/* Desktop Navigation Bar (Hidden on Mobile, handled by MobileBottomNav) */}
+        <nav className="hidden md:flex space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-2 border-t border-slate-800/60">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;

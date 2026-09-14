@@ -88,7 +88,7 @@ export const AICoachView: React.FC<AICoachViewProps> = ({
       </div>
 
       {/* Quick Prompt Chips */}
-      <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800 flex items-center gap-2 overflow-x-auto no-scrollbar">
+      <div className="px-3 sm:px-4 py-2.5 bg-slate-50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800 flex items-center gap-2 overflow-x-auto no-scrollbar">
         <span className="text-[11px] font-bold text-slate-400 shrink-0 flex items-center gap-1">
           <Sparkles className="w-3 h-3 text-amber-500" /> 추천 질문:
         </span>
@@ -98,7 +98,7 @@ export const AICoachView: React.FC<AICoachViewProps> = ({
             onClick={() => {
               setInputText(prompt);
             }}
-            className="text-xs whitespace-nowrap px-2.5 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-xs"
+            className="text-xs whitespace-nowrap px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-xs touch-manipulation shrink-0 min-h-[34px]"
           >
             {prompt}
           </button>
@@ -181,13 +181,13 @@ export const AICoachView: React.FC<AICoachViewProps> = ({
           onChange={(e) => setInputText(e.target.value)}
           placeholder="토익 620점 관련 질문이나 문장을 입력하세요... (예: 'although와 despite 차이점')"
           disabled={isLoading}
-          className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-50"
+          className="flex-1 px-4 py-3 sm:py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-50 min-h-[44px]"
         />
         <button
           type="submit"
           id="btn-send-coach-msg"
           disabled={!inputText.trim() || isLoading}
-          className="p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-sm transition-all disabled:opacity-40"
+          className="p-3 sm:p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-sm transition-all disabled:opacity-40 min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation active:scale-95"
         >
           <Send className="w-4 h-4" />
         </button>

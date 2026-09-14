@@ -180,8 +180,8 @@ export const Part5View: React.FC<Part5ViewProps> = ({
       {/* Main Question Card */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
         {/* Header & Badges */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-100 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300">
               문제 {currentIndex + 1} / {filteredQuestions.length}
             </span>
@@ -195,7 +195,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* 20s Speed Timer Badge */}
             <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border transition-colors ${
               secondsElapsed > 25 && !hasSubmitted
@@ -213,7 +213,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
             <button
               id={`btn-bookmark-p5-${currentQ.id}`}
               onClick={() => onToggleBookmark(currentQ.id)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-amber-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 sm:p-1.5 rounded-lg text-slate-400 hover:text-amber-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center"
               title={isBookmarked ? "북마크 해제" : "북마크 추가"}
             >
               {isBookmarked ? (
@@ -274,9 +274,9 @@ export const Part5View: React.FC<Part5ViewProps> = ({
                 id={`p5-opt-${idx}`}
                 onClick={() => handleSelectOption(idx)}
                 disabled={hasSubmitted}
-                className={`w-full text-left p-3.5 rounded-xl border text-sm transition-all flex items-center justify-between ${optionStyle}`}
+                className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-center justify-between min-h-[48px] touch-manipulation active:scale-[0.99] ${optionStyle}`}
               >
-                <span>{opt}</span>
+                <span className="leading-relaxed">{opt}</span>
                 {hasSubmitted && isCorrectAnswer && (
                   <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
                 )}
@@ -294,7 +294,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
             id="btn-submit-part5"
             onClick={handleSubmit}
             disabled={selectedOption === null}
-            className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/20 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/20 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-h-[48px] touch-manipulation active:scale-[0.99]"
           >
             <Zap className="w-4 h-4" />
             <span>정답 확인하기 (20초 타임어택 검증)</span>
@@ -383,7 +383,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
               <button
                 id="btn-ask-coach-this-q"
                 onClick={() => onAskCoachAboutQuestion(currentQ, selectedOption || 0)}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors min-h-[44px] touch-manipulation active:scale-[0.99]"
               >
                 <Bot className="w-4 h-4 text-indigo-400" />
                 <span>AI 코치 토비에게 800점 눈높이 1:1 질문</span>
@@ -394,7 +394,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
                   id="btn-prev-question"
                   onClick={handlePrev}
                   disabled={currentIndex === 0}
-                  className="flex items-center gap-1 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 disabled:opacity-40"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1 px-4 py-3 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 disabled:opacity-40 min-h-[44px] touch-manipulation"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>이전</span>
@@ -403,7 +403,7 @@ export const Part5View: React.FC<Part5ViewProps> = ({
                   id="btn-next-question"
                   onClick={handleNext}
                   disabled={currentIndex >= filteredQuestions.length - 1}
-                  className="flex items-center gap-1 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-40"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1 px-5 py-3 sm:py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-40 min-h-[44px] touch-manipulation active:scale-[0.99]"
                 >
                   <span>다음 문제</span>
                   <ArrowRight className="w-3.5 h-3.5" />

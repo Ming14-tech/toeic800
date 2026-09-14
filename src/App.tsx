@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Header } from "./components/Header";
+import { MobileBottomNav } from "./components/MobileBottomNav";
 import { DashboardView } from "./components/DashboardView";
 import { Part5View } from "./components/Part5View";
 import { LCPart2View } from "./components/LCPart2View";
@@ -389,8 +390,8 @@ export default function App() {
         progress={progress}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      {/* Main Container with Mobile bottom padding */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 pb-28 md:pb-8">
         {currentTab === "dashboard" && (
           <DashboardView
             progress={progress}
@@ -487,18 +488,28 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+      <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400 mb-16 md:mb-0">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
-            <strong>TOEIC 620 Study Agent</strong> — LC 340 + RC 280 맞춤형 인공지능 토익 학습 솔루션
+            <strong>TOEIC 620 Study Agent</strong> — LC 430 + RC 370 목표 800점 돌파 맞춤형 AI 솔루션
           </p>
           <div className="flex items-center gap-4">
             <span>Powered by Google Gemini 3.8 Flash</span>
             <span>•</span>
-            <span>1초 컷 품사 공식 & LC 소거법 탑재</span>
+            <span>모바일 & PC 반응형 최적화 지원</span>
           </div>
         </div>
       </footer>
+
+      {/* Mobile Bottom Navigation (Visible on mobile/tablet screens < 768px) */}
+      <MobileBottomNav
+        currentTab={currentTab}
+        onTabChange={(tab) => {
+          setCurrentTab(tab);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+        progress={progress}
+      />
     </div>
   );
 }

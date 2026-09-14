@@ -143,29 +143,29 @@ export const VocabView: React.FC<VocabViewProps> = ({
       {/* Top Header: Mode Switch & Category Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         {/* Mode Toggle with Paraphrase Mode */}
-        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-fit">
+        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-full sm:w-fit overflow-x-auto no-scrollbar">
           <button
             id="btn-vocab-mode-cards"
             onClick={() => setActiveMode("cards")}
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap min-h-[40px] touch-manipulation ${
               activeMode === "cards"
                 ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
             }`}
           >
-            <BookOpen className="w-4 h-4" />
+            <BookOpen className="w-4 h-4 shrink-0" />
             <span>플래시카드</span>
           </button>
           <button
             id="btn-vocab-mode-paraphrase"
             onClick={() => setActiveMode("paraphrase")}
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap min-h-[40px] touch-manipulation ${
               activeMode === "paraphrase"
                 ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
             }`}
           >
-            <Repeat className="w-4 h-4 text-emerald-500" />
+            <Repeat className="w-4 h-4 text-emerald-500 shrink-0" />
             <span>800 패러프레이징 족보</span>
           </button>
           <button
@@ -178,13 +178,13 @@ export const VocabView: React.FC<VocabViewProps> = ({
               setQuizSelectedOption(null);
               setQuizOptions(getQuizOptions());
             }}
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap min-h-[40px] touch-manipulation ${
               activeMode === "quiz"
                 ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
             }`}
           >
-            <Zap className="w-4 h-4" />
+            <Zap className="w-4 h-4 shrink-0" />
             <span>스피드 퀴즈</span>
           </button>
         </div>
@@ -192,13 +192,13 @@ export const VocabView: React.FC<VocabViewProps> = ({
         {/* Search */}
         {activeMode !== "paraphrase" && (
           <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3 sm:top-2.5" />
             <input
               type="text"
               placeholder="단어 또는 뜻 검색..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full pl-9 pr-3 py-2 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-base sm:text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px] sm:min-h-0"
             />
           </div>
         )}
@@ -410,7 +410,7 @@ export const VocabView: React.FC<VocabViewProps> = ({
                   e.stopPropagation();
                   onToggleMastered(currentItem.id);
                 }}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all min-h-[40px] touch-manipulation ${
                   isMastered
                     ? "bg-emerald-500 text-white border-emerald-600"
                     : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-emerald-500 hover:text-emerald-600"
@@ -428,7 +428,7 @@ export const VocabView: React.FC<VocabViewProps> = ({
                     handlePrevCard();
                   }}
                   disabled={currentIndex === 0}
-                  className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40"
+                  className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40 min-h-[40px] min-w-[40px] flex items-center justify-center touch-manipulation"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
@@ -439,7 +439,7 @@ export const VocabView: React.FC<VocabViewProps> = ({
                     handleNextCard();
                   }}
                   disabled={currentIndex >= filteredVocab.length - 1}
-                  className="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white disabled:opacity-40"
+                  className="p-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white disabled:opacity-40 min-h-[40px] min-w-[40px] flex items-center justify-center touch-manipulation active:scale-95"
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -493,11 +493,11 @@ export const VocabView: React.FC<VocabViewProps> = ({
                   id={`quiz-opt-${i}`}
                   onClick={() => handleQuizAnswer(i, opt)}
                   disabled={quizSubmitted}
-                  className={`p-4 rounded-xl border text-sm text-left transition-all flex items-center justify-between ${btnStyle}`}
+                  className={`p-4 rounded-xl border text-sm text-left transition-all flex items-center justify-between min-h-[48px] touch-manipulation active:scale-[0.99] ${btnStyle}`}
                 >
                   <span>{opt.meaning}</span>
-                  {quizSubmitted && isCorrect && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-                  {quizSubmitted && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-rose-500" />}
+                  {quizSubmitted && isCorrect && <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />}
+                  {quizSubmitted && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />}
                 </button>
               );
             })}
@@ -509,7 +509,7 @@ export const VocabView: React.FC<VocabViewProps> = ({
                 id="btn-next-quiz"
                 onClick={handleNextQuizQuestion}
                 disabled={quizIndex >= filteredVocab.length - 1}
-                className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md transition-all disabled:opacity-40 flex items-center gap-1.5"
+                className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-md transition-all disabled:opacity-40 flex items-center justify-center gap-1.5 min-h-[44px] touch-manipulation active:scale-95"
               >
                 <span>다음 단어</span>
                 <ArrowRight className="w-4 h-4" />

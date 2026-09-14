@@ -60,11 +60,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <strong> 패러프레이징 족보</strong>와 <strong> LC 우회적 답변 소거법</strong>을 장악하는 것입니다.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2">
               <button
                 id="btn-quick-diagnostic"
                 onClick={onStartDiagnostic}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/30 active:scale-95"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30 active:scale-95 touch-manipulation min-h-[44px]"
               >
                 <BrainCircuit className="w-4 h-4" />
                 <span>620→800 AI 약점 진단 테스트</span>
@@ -73,7 +73,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <button
                 id="btn-ask-coach-strategy"
                 onClick={() => onNavigate("coach", { prompt: "현재 토익 620점인데 800점까지 4주 만에 올리는 파트별 시간 배분과 공부 전략 알려줘!" })}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-medium text-sm transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-medium text-sm transition-all touch-manipulation min-h-[44px]"
               >
                 <Bot className="w-4 h-4 text-emerald-400" />
                 <span>코치 토비에게 800점 도약 전략 질문</span>

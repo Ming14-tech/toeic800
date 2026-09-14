@@ -203,7 +203,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
       {/* Main Question Audio Player & Question Box */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm">
         {/* Header bar */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 dark:border-slate-800 mb-6">
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
               {currentQ.questionType}
@@ -217,17 +217,17 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
               </span>
             )}
           </div>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-500 hidden sm:inline">
             💡 오답이라고 생각되는 보기는 <strong>[X 소거]</strong> 버튼을 누르세요!
           </span>
         </div>
 
         {/* Central Audio Play Controller */}
-        <div className="flex flex-col items-center justify-center p-6 mb-6 rounded-2xl bg-gradient-to-b from-slate-50 to-indigo-50/30 dark:from-slate-800/60 dark:to-indigo-950/20 border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-col items-center justify-center p-4 sm:p-6 mb-6 rounded-2xl bg-gradient-to-b from-slate-50 to-indigo-50/30 dark:from-slate-800/60 dark:to-indigo-950/20 border border-slate-200 dark:border-slate-800">
           <button
             id="btn-play-full-audio"
             onClick={playFullQuestionAudio}
-            className={`flex items-center gap-3 px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
+            className={`w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-4 rounded-full font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 touch-manipulation min-h-[48px] ${
               isPlayingAudio
                 ? "bg-rose-600 hover:bg-rose-500 text-white animate-pulse"
                 : "bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30"
@@ -324,7 +324,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
                       playSingleText(opt.text);
                     }}
                     title="이 보기만 다시 듣기"
-                    className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 transition-colors"
+                    className="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center touch-manipulation"
                   >
                     <Volume2 className="w-4 h-4" />
                   </button>
@@ -334,7 +334,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
                       type="button"
                       id={`btn-eliminate-${idx}`}
                       onClick={(e) => handleToggleEliminate(idx, e)}
-                      className={`px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 border transition-colors ${
+                      className={`px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1 border transition-colors min-h-[40px] touch-manipulation ${
                         isEliminated
                           ? "bg-rose-500 text-white border-rose-600"
                           : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-700 hover:bg-rose-50 hover:text-rose-600"
@@ -438,7 +438,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
               <button
                 id="btn-ask-coach-lc2"
                 onClick={() => onAskCoachAboutQuestion(currentQ, selectedOption || 0)}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 min-h-[44px] touch-manipulation active:scale-[0.99]"
               >
                 <Bot className="w-4 h-4 text-indigo-400" />
                 <span>AI 코치에게 LC 소거법 질문</span>
@@ -449,7 +449,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
                   id="btn-prev-lc-q"
                   onClick={handlePrev}
                   disabled={currentIndex === 0}
-                  className="flex items-center gap-1 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 disabled:opacity-40"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1 px-4 py-3 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 disabled:opacity-40 min-h-[44px] touch-manipulation"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>이전</span>
@@ -458,7 +458,7 @@ export const LCPart2View: React.FC<LCPart2ViewProps> = ({
                   id="btn-next-lc-q"
                   onClick={handleNext}
                   disabled={currentIndex >= questions.length - 1}
-                  className="flex items-center gap-1 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm disabled:opacity-40"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1 px-5 py-3 sm:py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm disabled:opacity-40 min-h-[44px] touch-manipulation active:scale-[0.99]"
                 >
                   <span>다음 문제</span>
                   <ArrowRight className="w-3.5 h-3.5" />

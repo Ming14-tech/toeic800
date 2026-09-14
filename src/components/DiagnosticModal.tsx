@@ -116,8 +116,8 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl space-y-6 relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/80 backdrop-blur-sm animate-fadeIn">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl max-w-xl w-full p-5 sm:p-8 shadow-2xl space-y-5 sm:space-y-6 relative max-h-[92vh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={() => {
@@ -125,7 +125,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
             onClose();
           }}
           disabled={isLoadingReport}
-          className="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center touch-manipulation"
         >
           <X className="w-5 h-5" />
         </button>
@@ -186,7 +186,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
                     <button
                       key={i}
                       onClick={() => handleSelectOption(i)}
-                      className={`w-full p-3.5 rounded-xl border text-left text-xs sm:text-sm transition-all ${
+                      className={`w-full p-4 rounded-xl border text-left text-xs sm:text-sm transition-all min-h-[46px] touch-manipulation active:scale-[0.99] ${
                         selectedOption === i
                           ? "border-indigo-600 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-950 dark:text-indigo-100 font-semibold ring-2 ring-indigo-500/20"
                           : "border-slate-200 dark:border-slate-800 hover:border-slate-300"
@@ -208,7 +208,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
                         (currentQ.data as LCPart2Question).options
                       )
                     }
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm shadow-md min-h-[44px] touch-manipulation active:scale-95"
                   >
                     {isPlayingLC ? (
                       <>
@@ -232,7 +232,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
                     <button
                       key={i}
                       onClick={() => handleSelectOption(i)}
-                      className={`w-full p-3.5 rounded-xl border text-left text-xs sm:text-sm transition-all ${
+                      className={`w-full p-4 rounded-xl border text-left text-xs sm:text-sm transition-all min-h-[46px] touch-manipulation active:scale-[0.99] ${
                         selectedOption === i
                           ? "border-indigo-600 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-950 dark:text-indigo-100 font-semibold ring-2 ring-indigo-500/20"
                           : "border-slate-200 dark:border-slate-800 hover:border-slate-300"
@@ -248,7 +248,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
             <button
               onClick={handleNextStep}
               disabled={selectedOption === null}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/20 disabled:opacity-40"
+              className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/20 disabled:opacity-40 min-h-[48px] touch-manipulation active:scale-[0.99]"
             >
               <span>{stepIndex === testQuestions.length - 1 ? "진단 결과 제출" : "다음 문제로"}</span>
               <ArrowRight className="w-4 h-4" />
