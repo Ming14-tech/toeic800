@@ -61,7 +61,9 @@ export interface VocabItem {
   paraphraseWith?: string; // 800점 핵심: 패러프레이징 짝꿍
   exampleEn: string;
   exampleKo: string;
-  category: "800 필수 어휘" | "비즈니스 심화" | "패러프레이징 짝꿍" | "출장/교통" | "회의/일정" | "인사/채용";
+  category: string;
+  day?: number; // 1 ~ 30
+  level?: "620도약" | "800필수" | "850+킬러";
   isMastered?: boolean;
   isBookmarked?: boolean;
 }
